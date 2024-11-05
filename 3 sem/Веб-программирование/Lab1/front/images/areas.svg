@@ -1,0 +1,50 @@
+<svg width="220" height="220" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <rect width="40" height="80" fill="#3cb0fe" x="70" y="110" />
+        <path fill="#3cb0fe" d="M110 110 H 150 L 110 190 Z" />
+        <path fill="#3cb0fe" d="M 110 30 a 80 80 0 0 0 -80 80 h 80 Z" />
+    </g>
+
+
+    <g>
+        <path stroke="black" fill="white" d="M110 110 H210 M210 110 L205 107 M210 110 L 205 113 M110 110 H 10 
+                        M 110 110 V210 M110 110 V10 M110 10 L107 15 M 110 10 L113 15" />
+    </g>
+
+
+    <g>
+        <path stroke="black" d="M30 108 V 112" />
+        <path stroke="black" d="M70 108 V 112" />
+        <path stroke="black" d="M150 108 V 112" />
+        <path stroke="black" d="M190 108 V 112" />
+    </g>
+
+
+    <g>
+        <path stroke="black" d="M108 30 H 112" />
+        <path stroke="black" d="M108 70 H 112" />
+        <path stroke="black" d="M108 150 H 112" />
+        <path stroke="black" d="M108 190 H 112" />
+    </g>
+
+
+    <g>
+        <text x="120" y="10" font-size="x-small">y</text>
+        <text x="210" y="100" font-size="x-small">x</text>
+
+        <text x="30" y="100" font-size="xx-small">-R</text>
+        <text x="70" y="100" font-size="x-small">-R/2</text>
+        <text x="150" y="100" font-size="x-small">R/2</text>
+        <text x="190" y="100" font-size="x-small">R</text>
+
+        <text x="120" y="30" font-size="x-small">R</text>
+        <text x="120" y="70" font-size="x-small">R/2</text>
+        <text x="120" y="150" font-size="x-small">-R/2</text>
+        <text x="120" y="190" font-size="x-small">-R</text>
+    </g>
+
+
+    <g>
+        <circle cx="150" cy="30" r="0" fill="#fd2f5b" />
+    </g>
+</svg>
