@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Лабораторная 1
+    </title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/check.js"></script>
+</head>
+
+<body>
+    <header>
+        <table id="header">
+            <tr id="headerRow">
+                <th id="headerName">
+                    <h1>Силинцев Владислав Витальевич</h1>
+                </th>
+                <th id="headerGroup">
+                    <h1>P3214</h1>
+                </th>
+                <th id="headerOption">
+                    <h1>355273</h1>
+                </th>
+            </tr>
+        </table>
+    </header>
+    <table id="main">
+        <form id="form">
+            <tr id="row1">
+                <td id="tdForX">
+                    <p id="messageForX" class="label">Значение X:
+
+                        <input type="checkbox" value="-4" id="option1" class="checkbox"> -4
+                        <input type="checkbox" value="-3" id="option2" class="checkbox"> -3
+                        <input type="checkbox" value="-2" id="option3" class="checkbox"> -2
+                        <input type="checkbox" value="-1" id="option4" class="checkbox"> -1
+                        <input type="checkbox" value="0" id="option5" class="checkbox"> 0
+                        <input type="checkbox" value="1" id="option6" class="checkbox"> 1
+                        <input type="checkbox" value="2" id="option7" class="checkbox"> 2
+                        <input type="checkbox" value="3" id="option8" class="checkbox"> 3
+                        <input type="checkbox" value="4" id="option9" class="checkbox"> 4
+                    </p>
+                    <div id="ErrorX" class="error"></div>
+                </td>
+                <td id="tdForImg" rowspan="3">
+                    <img src="images/areas.svg">
+                </td>
+            </tr>
+            <tr id="row2">
+                <td id="tdForY">
+                    <p id="messageForY" class="label">Значение Y:
+                        <input type="text" id="inputY" placeholder="Введите число от -5 до 5" class="input">
+                    </p>
+                    <div id="ErrorY" class="error"></div>
+                </td>
+            </tr>
+            <tr id="row3">
+                <td id="tdForR">
+                    <p id="messageForR" class="label">Значение R:
+                        <select id="selectR" class="input">
+                            <option>1</option>
+                            <option>1.5</option>
+                            <option>2</option>
+                            <option>2.5</option>
+                            <option>3</option>
+                        </select>
+                    </p>
+                    <div id="ErrorR" class="error"></div>
+                </td>
+            </tr>
+            <tr id="row4">
+                <td id="tdForButton" colspan="2">
+                    <script src="js/tryToSend.js"></script>
+                    <button id="button">
+                        <h2>Отправить</h2>
+                    </button>
+                    <div id="ErrorSend" class="error"></div>
+                </td>
+            </tr>
+        </form>
+        <script src="js/sendForm.js"></script>
+        <tr id="row5">
+            <td colspan="2">
+        </tr>
+        <tr id="row6">
+            <td id="tdForResult" colspan="2">
+                <table id="tableForResult">
+                    <tr>
+                        <th id="resultX">X</th>
+                        <th id="resultY">Y</th>
+                        <th id="resultR">R</th>
+                        <th id="result">Результат</th>
+                        <th id="time">Время отправки</th>
+                        <th id="timeForExecution">Время обработки</th>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
