@@ -1,0 +1,164 @@
+table#header {
+    width: 100%;
+    border-spacing: 0;
+    background-color: #fff;
+}
+
+table#header h1 {
+    font-family: sans-serif;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+table#header tr {
+    height: 60px;
+    background-color: #2f2fa2
+}
+
+tr#headerRow>th {
+    border-bottom: 10px solid #242582;
+    padding-left: 40px;
+}
+
+th#headerName {
+    width: 60%;
+}
+
+th#headerGroup {
+    width: 20%;
+}
+
+th#headerOption {
+    width: 20%;
+}
+
+table#main {
+    width: 100%;
+    border-spacing: 0;
+    background-color: #fff;
+}
+
+.input {
+    margin-left: 2%;
+    height: 40px;
+    width: 200px;
+}
+
+.checkbox {
+    margin-left: 4%;
+}
+
+
+table#main tr {
+    background-color: #fff;
+}
+
+button#button {
+    margin-left: 3%;
+    margin-top: 1%;
+    border-top-left-radius: 3em;
+    border-top-right-radius: 3em;
+    border-bottom-right-radius: 3em;
+    border-bottom-left-radius: 3em;
+    width: 250px;
+    height: 80px;
+    background-color: #f64c72;
+    color: #fff;
+    border: 0px;
+}
+
+button#button:hover {
+    background-color: #fd2f5b;
+}
+
+button#button:focus {
+    border: 3px solid #ff7a97;
+}
+
+.label {
+    font-size: x-large;
+}
+
+div#time {
+    margin-left: 5%;
+}
+
+td#tdForX {
+    width: 70%;
+}
+
+td#tdForImg {
+    vertical-align: top;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+input::placeholder {
+    font-style: italic;
+    font-size: larger;
+}
+
+p::before {
+    content: "○ ";
+}
+
+.error {
+    margin-left: 5%;
+    color: red;
+    font-size: 1em;
+}
+
+tr#row5 {
+    height: 100px;
+}
+
+table#tableForResult {
+    width: 100%;
+    font-family: sans-serif;
+    color: #fff;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table#tableForResult th {
+    height: 60px;
+    background-color: #553d67;
+    border-left: 3px solid #553d67;
+    border-right: 3px solid #553d67;
+}
+
+table#tableForResult td {
+    height: 40px;
+    background-color: #99738e;
+    border-left: 3px solid #553d67;
+    border-right: 3px solid #553d67;
+}
+
+th#resultX {
+    width: 5%;
+}
+
+th#resultY {
+    width: 10%;
+}
+
+th#resultR {
+    width: 5%;
+}
+
+th#result {
+    width: 10%;
+}
+
+th#time {
+    width: 40%;
+}
+
+th#timeForExecution {
+    width: 30%;
+}
