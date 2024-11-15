@@ -33,15 +33,15 @@
                 <td id="tdForX">
                     <p id="messageForX" class="label">Значение X:
 
-                        <input type="checkbox" value="-4" id="option1" class="checkbox"> -4
-                        <input type="checkbox" value="-3" id="option2" class="checkbox"> -3
-                        <input type="checkbox" value="-2" id="option3" class="checkbox"> -2
-                        <input type="checkbox" value="-1" id="option4" class="checkbox"> -1
-                        <input type="checkbox" value="0" id="option5" class="checkbox"> 0
-                        <input type="checkbox" value="1" id="option6" class="checkbox"> 1
-                        <input type="checkbox" value="2" id="option7" class="checkbox"> 2
-                        <input type="checkbox" value="3" id="option8" class="checkbox"> 3
-                        <input type="checkbox" value="4" id="option9" class="checkbox"> 4
+                        <input type="checkbox" value="-4" id="option1" class="checkbox" name="x"> -4
+                        <input type="checkbox" value="-3" id="option2" class="checkbox" name="x"> -3
+                        <input type="checkbox" value="-2" id="option3" class="checkbox" name="x"> -2
+                        <input type="checkbox" value="-1" id="option4" class="checkbox" name="x"> -1
+                        <input type="checkbox" value="0" id="option5" class="checkbox" name="x"> 0
+                        <input type="checkbox" value="1" id="option6" class="checkbox" name="x"> 1
+                        <input type="checkbox" value="2" id="option7" class="checkbox" name="x"> 2
+                        <input type="checkbox" value="3" id="option8" class="checkbox" name="x"> 3
+                        <input type="checkbox" value="4" id="option9" class="checkbox" name="x"> 4
                     </p>
                     <div id="ErrorX" class="error"></div>
                 </td>
@@ -52,7 +52,7 @@
             <tr id="row2">
                 <td id="tdForY">
                     <p id="messageForY" class="label">Значение Y:
-                        <input type="text" id="inputY" placeholder="Введите число от -5 до 5" class="input">
+                        <input type="text" id="inputY" placeholder="Введите число от -5 до 5" class="input" name="y">
                     </p>
                     <div id="ErrorY" class="error"></div>
                 </td>
@@ -60,7 +60,7 @@
             <tr id="row3">
                 <td id="tdForR">
                     <p id="messageForR" class="label">Значение R:
-                        <select id="selectR" class="input">
+                        <select id="selectR" class="input" name="r">
                             <option>1</option>
                             <option>1.5</option>
                             <option>2</option>
@@ -73,7 +73,6 @@
             </tr>
             <tr id="row4">
                 <td id="tdForButton" colspan="2">
-                    <script src="js/tryToSend.js"></script>
                     <button id="button">
                         <h2>Отправить</h2>
                     </button>
@@ -81,7 +80,6 @@
                 </td>
             </tr>
         </form>
-        <script src="js/sendForm.js"></script>
         <tr id="row5">
             <td colspan="2">
         </tr>
@@ -100,6 +98,7 @@
             </td>
         </tr>
     </table>
+    <script src="js/sendForm.js"></script>
 </body>
 
 </html>
