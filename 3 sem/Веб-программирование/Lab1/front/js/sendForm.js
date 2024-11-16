@@ -101,7 +101,7 @@ function sendForm() {
                 value = request.responseText;
                 table.innerHTML = table.innerHTML + value;
             } else {
-                result.innerHTML = table.innerHTML + "<tr><td colspan=6>Ошибка отправки</td></tr>";
+                table.innerHTML = table.innerHTML + "<tr><td colspan=6>Ошибка отправки</td></tr>";
             }
         }
     })
