@@ -6,12 +6,14 @@
 
 #include "../include/bmp_converter.h"
 #include "../include/image.h"
-#include "../include/util.h"
 
 
 #define BM 0x4D42
 #define PIXEL_BYTES 3
+#define BIT_COUNT 24
+#define DIB_SIZE 40
 
+//структура заголовка bmp файла
 #pragma pack(push, 1)
 struct bmp_header 
 {
@@ -34,106 +36,114 @@ struct bmp_header
 #pragma pack(pop)
 
 
+//вычисляем ширину в байтах с выравниванием
+static uint64_t width_with_padding(uint64_t width_in_bytes) {
+    while (width_in_bytes % 4 != 0){
+        width_in_bytes += 1;
+    }
+    return width_in_bytes;
+}
+
+
+//преобразуем bmp формат в структуру image
 enum read_status from_bmp( FILE* in, struct image* img ) {
-    struct bmp_header bmp_header;
+    struct bmp_header bmp_header; //создаем заголовок
+
+    //проверка, что считали заголовок
     if (fread(&bmp_header, sizeof(bmp_header), 1, in) != 1) {
         return READ_INVALID_HEADER;
     };
 
+    //проверка, что передан bmp файл
     if (bmp_header.bfType != BM) {
         return READ_INVALID_SIGNATURE;
     }
 
-    if (bmp_header.biBitCount != 24) {
+    //проверка формата в 24 бита
+    if (bmp_header.biBitCount != BIT_COUNT) {
         return READ_INVALID_BITS;
     }
 
-    uint32_t width = bmp_header.biWidth;
-    uint32_t height = bmp_header.biHeight;
-    uint32_t count_pixel = width * height;
+    uint64_t width = bmp_header.biWidth; //ширина в пикселях
+    uint64_t height = bmp_header.biHeight; //высота в пикселях
+    uint64_t count_pixel = width * height; //количество пикселей
 
-    uint64_t width_with_padding = width * PIXEL_BYTES;
-    width_with_padding = padding(width_with_padding);
+    uint64_t width_in_bytes = width * PIXEL_BYTES; //ширина в байтах
+    uint64_t width_in_bytes_with_padding = width_with_padding(width_in_bytes); //ширина в байтах с выравнванием
+    uint64_t padding = width_in_bytes_with_padding - width_in_bytes; //размер выравнивания в байтах
 
-    fseek(in, (long) bmp_header.bfOffBits, SEEK_SET);
+    struct pixel* pixels = create_pixel_array(count_pixel); //создаем массив для пикселей
 
-
-    struct pixel* pixels = create_pixel_array(count_pixel);
-    
-    for (uint32_t row = 0; row < height; row++) {
-        uint8_t* row_data = malloc(width_with_padding);
-        if (row_data == NULL){
-            destroy_pixel_array(pixels);
-            return READ_OUT_OF_MEMORY;
+    //проходим по всем строкам
+    for (uint64_t row_number = 0; row_number < height; row_number++) {
+        size_t read_result = fread(&pixels[row_number*width], sizeof(struct pixel), width, in);
+        if (read_result != width) {
+            fprintf(stdout, "%" PRIu64 "\n", row_number);
         }
-
-        fread(row_data, width_with_padding, 1, in);
-        for (uint64_t i = 0; i < width * PIXEL_BYTES; i += 3) {
-            uint8_t b = row_data[i];
-            uint8_t g = row_data[i+1];
-            uint8_t r = row_data[i+2];
-            init_pixel(pixels, (row*width) + (i / 3), b, g, r);
+        int seek_result = fseek(in, (long) padding, SEEK_CUR);
+        if (seek_result != 0) {
+            return READ_INVALID_BITS;
         }
-        free(row_data);
     }
 
+    //проверка, что добавили данные в структуру image
     if (!init_image(img, width, height, pixels)) {
         destroy_pixel_array(pixels);
         destroy_image(img);
-        return READ_OUT_OF_MEMORY;
+        return READ_INITIALIZATION;
     }
 
     return READ_OK;
 }
 
 
+
+//преобразуем структуру image в bmp формат
 enum write_status to_bmp( FILE* out, struct image const* img ) {
-    struct bmp_header bmp_header;
+    struct bmp_header bmp_header; //создаем заголовок
 
-    uint32_t width_with_padding = img->width * PIXEL_BYTES;
-    width_with_padding = padding(width_with_padding);
-    uint32_t padding = width_with_padding - img->width * PIXEL_BYTES;
+    uint64_t width = img->width; //ширина в пикселях
+    uint64_t height = img->height; //высота в пикселях
 
-    bmp_header.bfType = BM;
-    bmp_header.bfReserved = 0;
-    bmp_header.bfOffBits = sizeof(struct bmp_header);  // Размер заголовка
-    bmp_header.biSize = 40;  // Размер DIB заголовка
-    bmp_header.biWidth = (uint32_t) img->width;
-    bmp_header.biHeight = (uint32_t) img->height;
-    bmp_header.biPlanes = 1;  // Один канал для изображения
-    bmp_header.biBitCount = 24;  // 24 бита
-    bmp_header.biCompression = 0;  // Без сжатия
-    bmp_header.biSizeImage = width_with_padding * img->height;  // Размер изображения в байтах
-    bmp_header.biXPelsPerMeter = 0;
-    bmp_header.biYPelsPerMeter = 0;
-    bmp_header.biClrUsed = 0;
-    bmp_header.biClrImportant = 0;
-    bmp_header.bfileSize = bmp_header.bfOffBits + bmp_header.biSizeImage;
+    uint64_t width_in_bytes = width * PIXEL_BYTES; //ширина в байтах
+    uint64_t width_in_bytes_with_padding = width_with_padding(width_in_bytes); //ширина в байтах с выравниванием
+    uint64_t padding = width_in_bytes_with_padding - width_in_bytes; //размер выравнивания в байтах
 
-    fwrite(&bmp_header, sizeof(struct bmp_header), 1, out);
-    printf("%" PRIu64 "\n", img->width * PIXEL_BYTES);
-    printf("%" PRIu32 "\n", width_with_padding);
-    printf("%" PRIu32 "\n", padding);
-
-    for (uint64_t row = 0; row < img->height; row++) {
-        uint8_t* row_data = malloc(width_with_padding);
-        if (row_data == NULL) {
-            return WRITE_OUT_OF_MEMORY;
-        }
-
-        memset(row_data, 0, width_with_padding);
-
-        for (uint32_t i = 0; i < img->width; i++) {
-            uint64_t number = row * img->width + i;
-            row_data[i * 3] = img->data[number].b;
-            row_data[i * 3 + 1] = img->data[number].g;
-            row_data[i * 3 + 2] = img->data[number].r;
-        }
-
-        fwrite(row_data, width_with_padding, 1, out);
-        free(row_data);
+    bmp_header.bfType = BM; //тип файла
+    bmp_header.bfOffBits = sizeof(struct bmp_header);  //размер заголовка
+    bmp_header.biWidth = (uint32_t) width; //ширина в пикселях
+    bmp_header.biHeight = (uint32_t) height; //высота в пикселях
+    bmp_header.biBitCount = BIT_COUNT;  //формат 24 бита
+    bmp_header.biSizeImage = width_in_bytes_with_padding * height;  //размер изображения в байтах
+    bmp_header.bfileSize = bmp_header.bfOffBits + bmp_header.biSizeImage; //размер файла в байтах
+    bmp_header.biCompression = 0;  //без сжатия
+    bmp_header.biPlanes = 1;  //число цветовых плоскостей
+    bmp_header.biSize = DIB_SIZE;  //размер DIB заголовка
+    bmp_header.bfReserved = 0; //зарезервированное поле
+    bmp_header.biXPelsPerMeter = 0; //разрешение по горизонтали
+    bmp_header.biYPelsPerMeter = 0; //разрешение по вертикали
+    bmp_header.biClrUsed = 0; //количество цветов
+    bmp_header.biClrImportant = 0; //количество важных цветов
+    
+    //проверка, что заголовок записался
+    if (fwrite(&bmp_header, sizeof(struct bmp_header), 1, out)!=1) {
+        return WRITE_ERROR;
     }
 
+    //проходим по всем строкам
+    for (uint64_t row_number = 0; row_number < height; row_number++) {
+        uint8_t just_byte = 0;
+        size_t write_result = fwrite(&img->data[row_number*width], sizeof(struct pixel), width, out);
+        if (write_result != width) {
+            return WRITE_ERROR;
+        }
+        for (size_t i = 0; i<padding; i++) {
+            size_t write_padding_result = fwrite(&just_byte, sizeof(uint8_t), 1, out);
+            if (write_padding_result != 1) {
+                return WRITE_ERROR;
+            }
+        }
+    }
 
     return WRITE_OK;
 }

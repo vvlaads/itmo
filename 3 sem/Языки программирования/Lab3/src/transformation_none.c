@@ -23,7 +23,7 @@ struct maybe_transformation_image transformation_none(const struct image* source
         for (uint64_t i = 0; i< source->width; i++) {
             uint64_t number = row * source->width + i;
             struct pixel pixel = source->data[number];
-            bool result = init_pixel(pixels, number, pixel.b, pixel.g, pixel.r);
+            bool result = init_pixel(pixels, number, pixel);
             if (!result) {
                 destroy_image(new_image);
                 return (struct maybe_transformation_image) {.status=TRANSFORMATION_ERROR};

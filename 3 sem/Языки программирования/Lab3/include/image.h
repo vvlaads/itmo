@@ -9,7 +9,7 @@
     };
 
     struct pixel* create_pixel_array(size_t count);
-    bool init_pixel(struct pixel* pixels, size_t number, uint8_t b, uint8_t g, uint8_t r);
+    bool init_pixel(struct pixel* pixels, size_t number, struct pixel pixel);
     void destroy_pixel_array(struct pixel* pixels);
 
     struct image {

@@ -5,7 +5,7 @@
 
 
 struct pixel* create_pixel_array(size_t count) {
-    struct pixel* pixels = malloc(sizeof(struct pixel) * count);
+    struct pixel* pixels = malloc(count * sizeof(struct pixel));
     if (pixels != NULL) {
         return pixels;
     }
@@ -13,11 +13,9 @@ struct pixel* create_pixel_array(size_t count) {
 }
 
 
-bool init_pixel(struct pixel* pixels, size_t number, uint8_t b, uint8_t g, uint8_t r) {
+bool init_pixel(struct pixel* pixels, size_t number, struct pixel pixel) {
     if (pixels != NULL) {
-        pixels[number].b = b;
-        pixels[number].g = g;
-        pixels[number].r = r;
+        pixels[number] = pixel;
         return true;
     }
     return false;

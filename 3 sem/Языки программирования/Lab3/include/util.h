@@ -10,8 +10,6 @@
     
     enum check_transformation_status check_transformation(char* message);
 
-    uint32_t padding(uint32_t width);
-
 
     enum transformation_type {
         TRANSFORMATION_TYPE_NONE = 0,

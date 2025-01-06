@@ -12,7 +12,8 @@
         READ_INVALID_SIGNATURE,
         READ_INVALID_BITS,
         READ_INVALID_HEADER,
-        READ_OUT_OF_MEMORY
+        READ_OUT_OF_MEMORY,
+        READ_INITIALIZATION
     };
 
     enum read_status from_bmp( FILE* in, struct image* img );

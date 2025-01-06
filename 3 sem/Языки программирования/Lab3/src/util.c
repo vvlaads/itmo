@@ -17,14 +17,6 @@ enum check_transformation_status check_transformation(char* message) {
 }
 
 
-uint32_t padding(uint32_t width) {
-    while (width % 4 != 0){
-        width += 1;
-    }
-    return width;
-}
-
-
 enum transformation_type get_transformation_type(char* message) {
     if (strcmp(message, "none") == 0) return TRANSFORMATION_TYPE_NONE;
     if (strcmp(message, "cw90") == 0) return TRANSFORMATION_TYPE_CW90;
