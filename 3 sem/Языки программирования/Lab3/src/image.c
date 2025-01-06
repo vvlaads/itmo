@@ -13,15 +13,6 @@ struct pixel* create_pixel_array(size_t count) {
 }
 
 
-bool init_pixel(struct pixel* pixels, size_t number, struct pixel pixel) {
-    if (pixels != NULL) {
-        pixels[number] = pixel;
-        return true;
-    }
-    return false;
-}
-
-
 void destroy_pixel_array(struct pixel* pixels) {
     if (pixels != NULL) free(pixels);
 }

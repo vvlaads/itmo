@@ -72,7 +72,7 @@ int main( int argc, char** argv ) {
             fprintf(stderr, "Ошибка инициализации\n");
             return EXIT_ERROR;
         }
-        default: {
+        case READ_ERROR: {
             fprintf(stderr, "Ошибка при чтении файла\n");
             return EXIT_ERROR;
         }
