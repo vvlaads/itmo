@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Лабораторная 3</title>
+    <link rel="stylesheet" href="index.css"/>
+</h:head>
+<h:body>
+    <header>
+        <table id="header">
+            <tr id="headerRow">
+                <th id="headerName">
+                    <h1>Силинцев Владислав Витальевич</h1>
+                </th>
+                <th id="headerGroup">
+                    <h1>P3214</h1>
+                </th>
+                <th id="headerOption">
+                    <h1>321489</h1>
+                </th>
+            </tr>
+        </table>
+    </header>
+    <table id="main">
+        <tr>
+            <td id="tdForTimer">
+                <p class="label">Текущее время:
+                    <span id="timer">
+                    </span>
+                </p>
+            </td>
+            <td id="tdForLink">
+                <p class="label">
+                    <h:link value="Перейти на основную страницу" outcome="goToMain" styleClass="label"/>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <script src="js/timer.js">
+    </script>
+</h:body>
+</html>
