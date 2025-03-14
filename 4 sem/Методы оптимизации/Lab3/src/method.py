@@ -44,10 +44,10 @@ def method(x1, delta_x, epsilon1, epsilon2, func):
         # Шаг 8
         if abs((f_min - f_average) / f_average) < epsilon1 and abs((x_min - x_average) / x_average) < epsilon2:
             break  # Конец
-        elif x1 <= x_average <= x3:
-            points = [x1, x2, x3, x_min, x_average]
-            left_point = x1
-            right_point = x3
+        elif min(x1, x2, x3) <= x_average <= max(x1, x2, x3):
+            points = [x1, x2, x3, x_average]
+            left_point = min(x1, x2, x3)
+            right_point = max(x1, x2, x3)
 
             if f_min < f_average:
                 small_point = x_min
@@ -59,9 +59,11 @@ def method(x1, delta_x, epsilon1, epsilon2, func):
                     left_point = point
                 if small_point < point < right_point:
                     right_point = point
+
             x1 = left_point
             x2 = small_point
             x3 = right_point
+
             f1 = func(x1)
             f2 = func(x2)
             f3 = func(x3)
