@@ -1,0 +1,11 @@
+x: [-5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
+y: [8.0, 2.0, -2.0, -4.0, -4.0, -2.0, 2.0, 8.0, 16.0, 26.0, 38.0]
+Функция: y = 3.0x + 8.0
+phi: [np.float64(-7.0), np.float64(-4.0), np.float64(-1.0), np.float64(2.0), np.float64(5.0), np.float64(8.0), np.float64(11.0), np.float64(14.0), np.float64(17.0), np.float64(20.0), np.float64(23.0)]
+epsilon: [np.float64(15.0), np.float64(6.0), np.float64(1.0), np.float64(6.0), np.float64(9.0), np.float64(10.0), np.float64(9.0), np.float64(6.0), np.float64(1.0), np.float64(6.0), np.float64(15.0)]
+Функция: y = -2.0 + 3.0x + 1.0x^2
+phi: [np.float64(8.0), np.float64(2.0), np.float64(-2.0), np.float64(-4.0), np.float64(-4.0), np.float64(-2.0), np.float64(2.0), np.float64(8.0), np.float64(16.0), np.float64(26.0), np.float64(38.0)]
+epsilon: [np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+Функция: y = -2.0 + 3.0000000000000004x + 1.0x^2 + -2.6391519549048874e-17x^3
+phi: [np.float64(8.000000000000004), np.float64(2.0), np.float64(-2.000000000000001), np.float64(-4.0), np.float64(-4.0), np.float64(-2.0), np.float64(2.0000000000000004), np.float64(8.0), np.float64(16.0), np.float64(26.0), np.float64(38.0)]
+epsilon: [np.float64(3.552713678800501e-15), np.float64(0.0), np.float64(8.881784197001252e-16), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(4.440892098500626e-16), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
