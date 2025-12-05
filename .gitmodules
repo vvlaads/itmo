@@ -4,3 +4,6 @@
 [submodule "5 sem/Алгоритмы компьютерной графики/Лабораторная 4"]
 	path = 5 sem/Алгоритмы компьютерной графики/Лабораторная 4
 	url = https://github.com/vvlaads/Computer-graphics-4
+[submodule "5 sem/Алгоритмы компьютерной графики/Лабораторная 5"]
+	path = 5 sem/Алгоритмы компьютерной графики/Лабораторная 5
+	url = https://github.com/vvlaads/Computer-graphics-5
