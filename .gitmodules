@@ -7,3 +7,15 @@
 [submodule "5 sem/Алгоритмы компьютерной графики/Лабораторная 5"]
 	path = 5 sem/Алгоритмы компьютерной графики/Лабораторная 5
 	url = https://github.com/vvlaads/Computer-graphics-5
+[submodule "5 sem/Функциональное программирование/Лабораторная 1"]
+	path = 5 sem/Функциональное программирование/Лабораторная 1
+	url = https://github.com/vvlaads/Functional-programming-1
+[submodule "5 sem/Функциональное программирование/Лабораторная 2"]
+	path = 5 sem/Функциональное программирование/Лабораторная 2
+	url = https://github.com/vvlaads/Functional-programming-2
+[submodule "5 sem/Функциональное программирование/Лабораторная 3"]
+	path = 5 sem/Функциональное программирование/Лабораторная 3
+	url = https://github.com/vvlaads/Functional-programming-3
+[submodule "5 sem/Функциональное программирование/Лабораторная 0"]
+	path = 5 sem/Функциональное программирование/Лабораторная 0
+	url = https://github.com/vvlaads/Functional-programming-0
