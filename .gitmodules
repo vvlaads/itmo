@@ -37,3 +37,12 @@
 [submodule "5 sem/Информационные системы/Курсовая"]
 	path = 5 sem/Информационные системы/Курсовая
 	url = https://github.com/vvlaads/ToGame
+[submodule "5 sem/Системы ИИ/Лабораторная 1"]
+	path = 5 sem/Системы ИИ/Лабораторная 1
+	url = https://github.com/vvlaads/AI-systems-1
+[submodule "5 sem/Системы ИИ/Лабораторная 2"]
+	path = 5 sem/Системы ИИ/Лабораторная 2
+	url = https://github.com/vvlaads/AI-systems-2
+[submodule "5 sem/Системы ИИ/Лабораторная 3"]
+	path = 5 sem/Системы ИИ/Лабораторная 3
+	url = https://github.com/vvlaads/AI-systems-3
