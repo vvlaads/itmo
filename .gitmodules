@@ -25,3 +25,12 @@
 [submodule "5 sem/Алгоритмы компьютерной графики/Лабораторная 2"]
 	path = 5 sem/Алгоритмы компьютерной графики/Лабораторная 2
 	url = https://github.com/vvlaads/Computer-graphics-2
+[submodule "5 sem/Информационные системы/Лабораторная 1"]
+	path = 5 sem/Информационные системы/Лабораторная 1
+	url = https://github.com/vvlaads/IS_1
+[submodule "5 sem/Информационные системы/Лабораторная 2"]
+	path = 5 sem/Информационные системы/Лабораторная 2
+	url = https://github.com/vvlaads/IS_2
+[submodule "5 sem/Информационные системы/Лабораторная 3"]
+	path = 5 sem/Информационные системы/Лабораторная 3
+	url = https://github.com/vvlaads/IS_3
